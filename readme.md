@@ -2,30 +2,32 @@
 
 Результат выполнения тестового задания на позицию Junior Frontend developer (React).
 
-**Демо**: пока нет
+### Demo
+
+Пока нет
 
 ### Установка и запуск:
 
-1. Клонировать репозиторий:
+1. **Клонировать репозиторий**:
 
 ```sh
 git clone https://github.com/3K-Labs/test-assignment.git
-cd .\\test-assignment\\
+cd .\test-assignment\
 ```
 
-2. Установить зависимости:
+2. **Установить зависимости**:
 
 ```sh
 npm install
 ```
 
-3. Запуск dev-сервера:
+3. **Запуск dev-сервера**:
 
 ```sh
 npm run dev
 ```
 
-4. Сборка проекта:
+4. **Сборка проекта**:
 
 ```sh
 npm run build

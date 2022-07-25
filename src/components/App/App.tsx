@@ -1,6 +1,4 @@
-type Props = {};
-
-const App = ({}: Props): JSX.Element => {
+const App = (): JSX.Element => {
   return <div>Hello world</div>;
 };
 

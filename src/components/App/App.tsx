@@ -4,7 +4,7 @@ import Search from '../Search/Search';
 
 const App = (): JSX.Element => {
   return (
-    <div>
+    <div className="max-w-5xl">
       <Search />
       <PostsTable />
       <Pagination />

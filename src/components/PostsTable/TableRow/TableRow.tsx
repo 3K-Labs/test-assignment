@@ -1,6 +1,6 @@
-type Props = {};
+// type Props = {};
 
-const TableRow = ({}: Props): JSX.Element => {
+const TableRow = (): JSX.Element => {
   return <div>TableRow</div>;
 };
 

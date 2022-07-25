@@ -1,6 +1,6 @@
-type Props = {};
+// type Props = {};
 
-const Pagination = ({}: Props): JSX.Element => {
+const Pagination = (): JSX.Element => {
   return <div>Pagination</div>;
 };
 

@@ -1,8 +1,8 @@
 import TableCell from '../TableCell/TableCell';
 
-type Props = {};
+// type Props = {};
 
-const TableHeader = ({}: Props): JSX.Element => {
+const TableHeader = (): JSX.Element => {
   return (
     <div>
       <TableCell>ID</TableCell>

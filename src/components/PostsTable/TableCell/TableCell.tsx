@@ -1,4 +1,6 @@
-type Props = React.ComponentPropsWithoutRef<'div'> & {
+import { ComponentPropsWithoutRef } from 'react';
+
+type Props = ComponentPropsWithoutRef<'div'> & {
   header?: boolean;
 };
 

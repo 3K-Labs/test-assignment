@@ -1,6 +1,6 @@
-type Props = {};
+// type Props = {};
 
-const Search = ({}: Props): JSX.Element => {
+const Search = (): JSX.Element => {
   return <div>Search</div>;
 };
 

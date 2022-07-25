@@ -8,19 +8,19 @@ type Props = {
 const TableRow = ({ post }: Props): JSX.Element => {
   if (!post) {
     return (
-      <div>
+      <>
         <TableCell></TableCell>
         <TableCell></TableCell>
         <TableCell></TableCell>
-      </div>
+      </>
     );
   }
   return (
-    <div>
-      <TableCell>{post.id}</TableCell>
+    <>
+      <TableCell className="justify-center">{post.id}</TableCell>
       <TableCell>{post.title}</TableCell>
       <TableCell>{post.body}</TableCell>
-    </div>
+    </>
   );
 };
 

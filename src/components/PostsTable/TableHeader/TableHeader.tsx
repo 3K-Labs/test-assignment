@@ -5,9 +5,9 @@ import TableCell from '../TableCell/TableCell';
 const TableHeader = (): JSX.Element => {
   return (
     <div>
-      <TableCell>ID</TableCell>
-      <TableCell>Заголовок</TableCell>
-      <TableCell>Описание</TableCell>
+      <TableCell header={true}>ID</TableCell>
+      <TableCell header={true}>Заголовок</TableCell>
+      <TableCell header={true}>Описание</TableCell>
     </div>
   );
 };

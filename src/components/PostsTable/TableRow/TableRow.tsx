@@ -9,9 +9,9 @@ const TableRow = ({ post }: Props): JSX.Element => {
   if (!post) {
     return (
       <>
-        <TableCell></TableCell>
-        <TableCell></TableCell>
-        <TableCell></TableCell>
+        <TableCell>&nbsp;</TableCell>
+        <TableCell>&nbsp;</TableCell>
+        <TableCell>&nbsp;</TableCell>
       </>
     );
   }

@@ -1,20 +1,41 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+import { FaSearch } from 'react-icons/fa';
+import { setSearch } from '../../features/navigationSlice';
 
 // type Props = {};
 
 const Search = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
 
+  const dispatch = useDispatch();
+
+  const navigation = useNavigate();
+
   return (
-    <input
-      type="text"
-      className="py-4 px-6 bg-sc-gray text-slate-300 font-sans font-normal text-sm w-1/2 mb-4"
-      placeholder="Поиск"
-      value={query}
-      onChange={(e) => {
-        setQuery(e.target.value);
+    <form
+      className="flex w-1/2 mb-4 items-stretch"
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(setSearch(query));
+        navigation('../', { replace: false });
       }}
-    />
+    >
+      <input
+        type="text"
+        className="py-4 px-6 bg-sc-gray text-slate-300 font-sans font-normal text-sm flex-grow"
+        placeholder="Поиск"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+        }}
+      />
+      <button className="py-2 px-6 bg-sc-gray text-white text-xl hover:bg-gray-700 transition-all">
+        <FaSearch />
+      </button>
+    </form>
   );
 };
 

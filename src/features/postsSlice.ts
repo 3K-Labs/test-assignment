@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../app/store';
 
 import { Post } from '../types';
 
@@ -22,5 +23,7 @@ export const postsSlice = createSlice({
 });
 
 export const { setPosts } = postsSlice.actions;
+
+export const getPosts = (state: RootState) => state.posts.value;
 
 export default postsSlice.reducer;

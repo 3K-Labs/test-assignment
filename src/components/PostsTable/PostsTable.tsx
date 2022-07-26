@@ -1,9 +1,8 @@
 import { useLayoutEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { RootState } from '../../app/store';
 import { setPagesAmount } from '../../features/navigationSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { Post } from '../../types';
 import { POSTS_PER_PAGE, Sorting } from '../../utils/constants';
 import TableHeader from './TableHeader/TableHeader';
@@ -15,11 +14,11 @@ const PostsTable = (): JSX.Element => {
   const { page: pageStr } = useParams();
   const page = Number(pageStr) ? Number(pageStr) : 1;
 
-  const { sorting, search } = useSelector((state: RootState) => state.navigation);
+  const { sorting, search } = useAppSelector((state) => state.navigation);
   const searchRegExp = new RegExp(search, 'i');
 
-  const dispatch = useDispatch();
-  const allPosts = useSelector((state: RootState) => state.posts.value);
+  const dispatch = useAppDispatch();
+  const allPosts = useAppSelector((state) => state.posts.value);
   const [visiblePosts, setVisiblePosts] = useState<Post[]>([]);
 
   const filteredPosts = useMemo(() => {

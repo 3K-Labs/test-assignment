@@ -5,8 +5,10 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { store } from './app/store';
+import { AppStore, setupStore } from './app/store';
 import App from './components/App/App';
+
+const store: AppStore = setupStore();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

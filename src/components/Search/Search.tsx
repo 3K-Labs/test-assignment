@@ -1,16 +1,16 @@
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { FaSearch } from 'react-icons/fa';
 import { setSearch } from '../../features/navigationSlice';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 // type Props = {};
 
 const Search = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const navigation = useNavigate();
 

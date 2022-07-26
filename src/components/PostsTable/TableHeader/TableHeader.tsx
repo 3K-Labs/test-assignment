@@ -1,16 +1,15 @@
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from '../../../app/store';
-import { setSorting } from '../../../features/navigationSlice';
+import { getSorting, setSorting } from '../../../features/navigationSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useAppDispatch';
 import { Sorting } from '../../../utils/constants';
 import TableCell from '../TableCell/TableCell';
 
 // type Props = {};
 
 const TableHeader = (): JSX.Element => {
-  const { sorting } = useSelector((state: RootState) => state.navigation);
-  const dispatch = useDispatch();
+  const sorting = useAppSelector(getSorting);
+  const dispatch = useAppDispatch();
 
   const iconProps = { className: 'ml-2 text-lg' };
   const getIcon = (desc: boolean) =>

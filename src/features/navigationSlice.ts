@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../app/store';
 
 import { Sorting } from '../utils/constants';
 
@@ -32,5 +33,9 @@ export const navigationSlice = createSlice({
 });
 
 export const { setSorting, setSearch, setPagesAmount } = navigationSlice.actions;
+
+export const getSorting = (state: RootState) => state.navigation.sorting;
+export const getSearch = (state: RootState) => state.navigation.search;
+export const getPagesAmount = (state: RootState) => state.navigation.pagesAmount;
 
 export default navigationSlice.reducer;

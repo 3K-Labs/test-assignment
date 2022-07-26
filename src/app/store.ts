@@ -1,14 +1,24 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 
 import postsReducer from '../features/postsSlice';
 import navigationReducer from '../features/navigationSlice';
 
-export const store = configureStore({
-  reducer: {
-    posts: postsReducer,
-    navigation: navigationReducer,
-  },
+const rootReducer = combineReducers({
+  posts: postsReducer,
+  navigation: navigationReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+// export const store = configureStore({
+//   reducer: rootReducer,
+// });
+
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];

@@ -16,6 +16,7 @@ const PostsTable = (): JSX.Element => {
   const page = Number(pageStr) ? Number(pageStr) : 1;
 
   const { sorting, search } = useSelector((state: RootState) => state.navigation);
+  const searchRegExp = new RegExp(search, 'i');
 
   const dispatch = useDispatch();
   const allPosts = useSelector((state: RootState) => state.posts.value);
@@ -46,7 +47,7 @@ const PostsTable = (): JSX.Element => {
     }
     if (search.length) {
       posts = posts.filter(
-        (post) => post.title.includes(search) || post.body.includes(search),
+        (post) => searchRegExp.test(post.title) || searchRegExp.test(post.body),
       );
     }
 

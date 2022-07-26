@@ -43,7 +43,7 @@ const Pagination = (): JSX.Element => {
     );
 
   return (
-    <div className="w-full flex justify-between items-center font-sans font-medium text-2xl mt-4">
+    <div className="w-full flex justify-between items-center font-sans font-semibold text-2xl mt-4">
       {prevLink}
       <div className="font-bold italic text-lg flex flex-wrap justify-center items-center">
         {pagesAmount > 1

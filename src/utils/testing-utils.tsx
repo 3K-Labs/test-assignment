@@ -1,34 +1,39 @@
-import React, { PropsWithChildren } from 'react';
-import { render } from '@testing-library/react';
-import type { RenderOptions } from '@testing-library/react';
-import { configureStore } from '@reduxjs/toolkit';
 import type { PreloadedState } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import type { RenderOptions } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import React, { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import type { AppStore, RootState } from '../app/store';
-
-import postsReducer from '../features/postsSlice';
 import navigationReducer from '../features/navigationSlice';
+import postsReducer from '../features/postsSlice';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  preloadedState?: PreloadedState<RootState>;
-  store?: AppStore;
+	preloadedState?: PreloadedState<RootState>;
+	store?: AppStore;
 }
 
 export function renderWithProviders(
-  ui: React.ReactElement,
-  {
-    preloadedState = {},
-    store = configureStore({
-      reducer: { posts: postsReducer, navigation: navigationReducer },
-      preloadedState,
-    }),
-    ...renderOptions
-  }: ExtendedRenderOptions = {},
+	ui: React.ReactElement,
+	{
+		preloadedState = {},
+		store = configureStore({
+			reducer: { posts: postsReducer, navigation: navigationReducer },
+			preloadedState,
+		}),
+		...renderOptions
+	}: ExtendedRenderOptions = {},
 ) {
-  function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
-    return <Provider store={store}>{children}</Provider>;
-  }
+	function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
+		return <Provider store={store}>{children}</Provider>;
+	}
 
-  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+	return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
+
+export const LocationDisplay = () => {
+	const location = useLocation();
+	return <div data-testid="location-display">{location.pathname}</div>;
+};

@@ -1,27 +1,40 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
-import { setPosts } from '../features/postsSlice';
 import { Post } from '../types';
-import { useAppDispatch } from './useAppDispatch';
+
+type Result = {
+	posts: Post[];
+	isLoading: boolean;
+	error: string;
+};
 
 // getting a full list of posts from the API
-const useFetchPosts = (): void => {
-  const dispatch = useAppDispatch();
+const useFetchPosts = (): Result => {
+	const [posts, setPosts] = useState<Post[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string>('');
 
-  const getPosts = async (): Promise<void> => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    try {
-      const data: Post[] = await res.json(); // dangerous
-      setPosts(data);
-      dispatch(setPosts(data));
-    } catch (e) {
-      console.error(e);
-    }
-  };
+	const getPosts = async (): Promise<void> => {
+		setIsLoading(true);
+		const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+		setIsLoading(false);
+		if (res.status !== 200) {
+			setError('An error occured while fetching data from the server');
+			return;
+		}
+		try {
+			const data: Post[] = await res.json(); // dangerous
+			setPosts(data);
+		} catch (e) {
+			setError('Cannot parse the data');
+		}
+	};
 
-  useLayoutEffect(() => {
-    getPosts();
-  }, []);
+	useLayoutEffect(() => {
+		getPosts();
+	}, []);
+
+	return { posts, isLoading, error };
 };
 
 export default useFetchPosts;

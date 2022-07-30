@@ -1,25 +1,25 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../app/store';
 
+import { RootState } from '../app/store';
 import { Post } from '../types';
 
 export interface PostsState {
-  value: Post[];
+	value: Post[];
 }
 
 const initialState: PostsState = {
-  value: [],
+	value: [],
 };
 
 export const postsSlice = createSlice({
-  name: 'posts',
-  initialState,
-  reducers: {
-    setPosts: (state, { payload }: PayloadAction<Post[]>) => {
-      state.value = payload;
-    },
-  },
+	name: 'posts',
+	initialState,
+	reducers: {
+		setPosts: (state, { payload }: PayloadAction<Post[]>) => {
+			state.value = payload;
+		},
+	},
 });
 
 export const { setPosts } = postsSlice.actions;

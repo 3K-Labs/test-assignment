@@ -2,44 +2,26 @@
 
 Результат выполнения тестового задания на позицию Junior Frontend developer (React).
 
+[Условия задания](./task-conditions.md)
+
 [DEMO](https://3k-labs-test-assignment.netlify.app/)
 
-## Установка и запуск
-
-1. **Клонировать репозиторий**:
+## Installation
 
 ```sh
-git clone https://github.com/3K-Labs/test-assignment.git
-cd .\test-assignment\
+$ git clone https://github.com/3K-Labs/test-assignment.git
+
+$ cd .\test-assignment\
+
+$ npm install
 ```
 
-2. **Установить зависимости**:
+## Running the app
 
 ```sh
-npm install
+# launching the dev server
+$ npm run dev
+
+# building the project
+$ npm run build
 ```
-
-3. **Запуск dev-сервера**:
-
-```sh
-npm run dev
-```
-
-4. **Сборка проекта**:
-
-```sh
-npm run build
-```
-
-## Использованные технологии
-
-- TypeScript
-- React
-- Redux (Redux Toolkit)
-- React Router
-- TailwindCSS
-- Vite
-
-## Комментарий
-
-Так как это тестовое задание, необходимое для проверки моих навыков, я сознательно сделал некоторые допущения, которые не стал бы делать в реальном проекте. В первую очередь: я бы не стал хранить весь массив постов в стейте, очевидно, что это плохо скажется на произоводительности веб-приложения, даже если его нет необходимости сильно масштабировать. В идеале тут нужен продуманный бек-энд, к которому можно посылать запросы с указанием страницы, сортировки, строки поиска и прочего, а в ответ получать необходимый минимум данных (jsonplaceholder предоставляет такой API, однако я сознательно не стал его использовать, решив, что задание немного не об этом).

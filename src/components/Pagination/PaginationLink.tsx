@@ -13,14 +13,14 @@ const PaginationLink = ({ to, active, children }: Props): JSX.Element => {
 		return (
 			<Link
 				to={`../${to !== '1' ? to : ''}`}
-				className="py-2 px-4 hover:text-link-green hover:bg-slate-100 transition-all rounded-lg mx-1 outline-none focus:ring-2 focus:ring-link-green/50"
+				className="py-1 px-3 hover:text-link-green hover:bg-slate-100 transition-all rounded-lg mx-1 outline-none focus:ring-2 focus:ring-link-green/50"
 			>
 				{children}
 			</Link>
 		);
 	}
 	return (
-		<span className={`py-2 px-4${active ? ' text-link-green' : ''}`}>{children}</span>
+		<span className={`py-1 px-3${active ? ' text-link-green' : ''}`}>{children}</span>
 	);
 };
 

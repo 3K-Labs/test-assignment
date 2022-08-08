@@ -1,20 +1,30 @@
 import { Post } from '../../../types';
-import { TableCell } from '../TableCell/TableCell';
+import { EmptyCell, LoadingCell, TableCell } from '../TableCell/TableCell';
 
 type Props = {
 	post?: Post;
+	isLoading?: boolean;
 };
 
-const TableRow = ({ post }: Props): JSX.Element => {
-	if (!post) {
+const TableRow = ({ post, isLoading = false }: Props): JSX.Element => {
+	if (isLoading)
 		return (
 			<>
-				<TableCell>&nbsp;</TableCell>
-				<TableCell>&nbsp;</TableCell>
-				<TableCell>&nbsp;</TableCell>
+				<LoadingCell />
+				<LoadingCell />
+				<LoadingCell />
 			</>
 		);
-	}
+
+	if (!post)
+		return (
+			<>
+				<EmptyCell />
+				<EmptyCell />
+				<EmptyCell />
+			</>
+		);
+
 	return (
 		<>
 			<TableCell className="justify-center">{post.id}</TableCell>

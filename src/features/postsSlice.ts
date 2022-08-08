@@ -6,10 +6,12 @@ import { Post } from '../types';
 
 export interface PostsState {
 	value: Post[];
+	isLoading: boolean;
 }
 
 const initialState: PostsState = {
 	value: [],
+	isLoading: false,
 };
 
 export const postsSlice = createSlice({
@@ -19,11 +21,15 @@ export const postsSlice = createSlice({
 		setPosts: (state, { payload }: PayloadAction<Post[]>) => {
 			state.value = payload;
 		},
+		setIsLoading: (state, { payload }: PayloadAction<boolean>) => {
+			state.isLoading = payload;
+		},
 	},
 });
 
-export const { setPosts } = postsSlice.actions;
+export const { setPosts, setIsLoading } = postsSlice.actions;
 
 export const getPosts = (state: RootState) => state.posts.value;
+export const getIsLoading = (state: RootState) => state.posts.isLoading;
 
 export default postsSlice.reducer;
